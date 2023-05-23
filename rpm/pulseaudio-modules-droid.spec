@@ -13,6 +13,7 @@ Source0:    %{name}-%{version}.tar.bz2
 Requires:   pulseaudio >= %{pulseversion}
 Requires:   %{name}-common = %{version}-%{release}
 Requires:   pulseaudio-module-keepalive >= 1.0.0
+Patch0:     1004-droid-util-don-t-crash-when-a-devicePort-connects-to.patch
 BuildRequires:  libtool-ltdl-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig(pulsecore) >= %{pulsemajorminor}
