@@ -5,7 +5,7 @@
 Name:       pulseaudio-modules-droid
 
 Summary:    PulseAudio Droid HAL modules
-Version:    %{pulsemajorminor}.102
+Version:    %{pulsemajorminor}.104
 Release:    1
 License:    LGPLv2+
 URL:        https://github.com/mer-hybris/pulseaudio-modules-droid
@@ -16,6 +16,7 @@ Requires:   pulseaudio-module-keepalive >= 1.0.0
 Patch0:     1004-droid-util-don-t-crash-when-a-devicePort-connects-to.patch
 BuildRequires:  libtool-ltdl-devel
 BuildRequires:  meson
+BuildRequires:  ccache
 BuildRequires:  pkgconfig(pulsecore) >= %{pulsemajorminor}
 BuildRequires:  pkgconfig(android-headers)
 BuildRequires:  pkgconfig(libhardware)
@@ -58,20 +59,17 @@ fi
 %meson_install
 
 %files
-%defattr(-,root,root,-)
-%{_libdir}/pulse-%{pulsemajorminor}/modules/libdroid-sink.so
-%{_libdir}/pulse-%{pulsemajorminor}/modules/libdroid-source.so
-%{_libdir}/pulse-%{pulsemajorminor}/modules/module-droid-sink.so
-%{_libdir}/pulse-%{pulsemajorminor}/modules/module-droid-source.so
-%{_libdir}/pulse-%{pulsemajorminor}/modules/module-droid-card.so
+%{_libdir}/pulse-*/modules/libdroid-sink.so
+%{_libdir}/pulse-*/modules/libdroid-source.so
+%{_libdir}/pulse-*/modules/module-droid-sink.so
+%{_libdir}/pulse-*/modules/module-droid-source.so
+%{_libdir}/pulse-*/modules/module-droid-card.so
 %license COPYING
 
 %files common
-%defattr(-,root,root,-)
-%{_libdir}/pulse-%{pulsemajorminor}/modules/libdroid-util.so
+%{_libdir}/pulse-*/modules/libdroid-util.so
 
 %files devel
-%defattr(-,root,root,-)
 %dir %{_includedir}/pulsecore/modules/droid
 %{_includedir}/pulsecore/modules/droid/conversion.h
 %{_includedir}/pulsecore/modules/droid/droid-config.h
