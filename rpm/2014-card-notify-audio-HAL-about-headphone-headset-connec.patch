@@ -30,7 +30,7 @@ Bug-UBports: https://gitlab.com/ubports/development/ubuntu-touch/-/issues/2280
  src/common/include/droid/conversion.h |  1 +
  src/droid/module-droid-card.c         | 48 +++++++++++++++++++++++++++++++++++
  3 files changed, 53 insertions(+)
-   
+
 diff --git a/src/common/conversion.c b/src/common/conversion.c
 index b67017b..9af7978 100644
 --- a/src/common/conversion.c
@@ -47,7 +47,7 @@ index b67017b..9af7978 100644
      return string_convert_num_to_str(string_conversion_table_input_device_fancy, (uint32_t) value, to_str);
  }
 diff --git a/src/common/include/droid/conversion.h b/src/common/include/droid/conversion.h
-index 2d134a8..23caed4 100644
+index 2bafef6..a86f277 100644
 --- a/src/common/include/droid/conversion.h
 +++ b/src/common/include/droid/conversion.h
 @@ -79,6 +79,7 @@ bool pa_input_device_default_audio_source(audio_devices_t input_device, audio_so
@@ -59,7 +59,7 @@ index 2d134a8..23caed4 100644
  
  int pa_conversion_parse_list(pa_conversion_string_t type, const char *separator,
 diff --git a/src/droid/module-droid-card.c b/src/droid/module-droid-card.c
-index 4362226..e498c2e 100644
+index d5cc557..bcdb8c5 100644
 --- a/src/droid/module-droid-card.c
 +++ b/src/droid/module-droid-card.c
 @@ -23,6 +23,7 @@
@@ -78,7 +78,7 @@ index 4362226..e498c2e 100644
  #include <droid/droid-util.h>
  #include <droid/sllist.h>
  #include <droid/utils.h>
-@@ -777,6 +779,47 @@ static int card_set_profile(pa_card *c, pa_card_profile *new_profile) {
+@@ -784,6 +786,47 @@ static int card_set_profile(pa_card *c, pa_card_profile *new_profile) {
      return 0;
  }
  
@@ -126,15 +126,14 @@ index 4362226..e498c2e 100644
  
  int pa__init(pa_module *m) {
      struct userdata *u = NULL;
-@@ -894,6 +937,12 @@ int pa__init(pa_module *m) {
+@@ -908,6 +951,11 @@ int pa__init(pa_module *m) {
+     else
+         u->extevdev = NULL;
  
-     pa_card_choose_initial_profile(u->card);
-     init_profile(u);
-+
 +    pa_module_hook_connect(u->module,
-+            &u->module->core->hooks[PA_CORE_HOOK_PORT_AVAILABLE_CHANGED],
-+            PA_HOOK_NORMAL,
-+            port_availability_changed_hook_callback, u);
++                           &u->module->core->hooks[PA_CORE_HOOK_PORT_AVAILABLE_CHANGED],
++                           PA_HOOK_NORMAL,
++                           port_availability_changed_hook_callback, u);
 +
      pa_card_put(u->card);
  

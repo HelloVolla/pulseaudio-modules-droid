@@ -14,7 +14,8 @@ Requires:   pulseaudio >= %{pulseversion}
 Requires:   %{name}-common = %{version}-%{release}
 Requires:   pulseaudio-module-keepalive >= 1.0.0
 Patch0:     1004-droid-util-don-t-crash-when-a-devicePort-connects-to.patch
-Patch1:     2014-card-notify-audio-HAL-about-headphone-headset-connec.patch
+Patch1:     2004-card-read-headphone-availability-from-input-device.patch
+Patch2:     2014-card-notify-audio-HAL-about-headphone-headset-connec.patch
 BuildRequires:  libtool-ltdl-devel
 BuildRequires:  meson
 BuildRequires:  ccache
