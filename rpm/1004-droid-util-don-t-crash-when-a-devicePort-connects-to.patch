@@ -1,0 +1,27 @@
+Description: droid-util: don't crash when a devicePort connects to a devicePort
+ Devices like Volla Phone 22 does have a devicePort connects to another
+ devicePort, and this seems to be supported by Android as an "audio
+ patch". However, since I'm not sure how it should be implemented, for
+ now just don't crash here.
+Author: Ratchanan Srirattanamet <ratchanan@ubports.com>
+Origin: vendor
+Bug: https://github.com/mer-hybris/pulseaudio-modules-droid/issues/118
+Forwarded: not-needed
+Last-Update: 2022-12-09
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/common/droid-util.c
++++ b/src/common/droid-util.c
+@@ -273,6 +273,12 @@
+ 
+         droid_mapping = droid_mapping_update(droid_mapping, profile_set, module, sink, source);
+ 
++    } else if (source->port_type == DM_CONFIG_TYPE_DEVICE_PORT &&
++               sink->port_type == DM_CONFIG_TYPE_DEVICE_PORT) {
++
++        pa_log_warn("Audio patch from '%s' to '%s' not implemented.",
++               source->name, sink->name);
++        return;
+     } else {
+         pa_log("Internal data structures are confused.");
+         pa_assert_not_reached();
