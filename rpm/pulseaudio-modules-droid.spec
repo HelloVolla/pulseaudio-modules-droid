@@ -13,7 +13,7 @@ Source0:    %{name}-%{version}.tar.bz2
 Patch0:     1001-Support-adding-suffix-to-module-name-specify-android.patch
 Patch1:     1004-droid-util-don-t-crash-when-a-devicePort-connects-to.patch
 Patch2:     2002-src-Add-h2w-detection-code-from-pulseaudio-packaging.patch
-Patch3:     2004-card-read-headphone-availability-from-input-device.patch
+#Patch3:     2004-card-read-headphone-availability-from-input-device.patch
 Patch4:     2014-card-notify-audio-HAL-about-headphone-headset-connec.patch
 Requires:   pulseaudio >= %{pulseversion}
 Requires:   %{name}-common = %{version}-%{release}
