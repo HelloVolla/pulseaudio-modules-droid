@@ -25,6 +25,7 @@ BuildRequires:  pkgconfig(pulsecore) >= %{pulsemajorminor}
 BuildRequires:  pkgconfig(android-headers)
 BuildRequires:  pkgconfig(libhardware)
 BuildRequires:  pkgconfig(expat)
+BuildRequires:  libudev-devel
 
 %description
 PulseAudio Droid HAL modules.
