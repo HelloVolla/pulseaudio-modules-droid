@@ -336,6 +336,10 @@ struct string_conversion string_conversion_table_output_flag[] = {
 
     /* Audio output flags which may or may not be defined for all devices. */
     STRING_ENTRY_IF_AUDIO_OUTPUT_FLAG_COMPRESS_PASSTHROUGH
+    STRING_ENTRY_IF_AUDIO_OUTPUT_FLAG_GAPLESS_OFFLOAD
+    STRING_ENTRY_IF_AUDIO_OUTPUT_FLAG_SPATIALIZER
+    STRING_ENTRY_IF_AUDIO_OUTPUT_FLAG_ULTRASOUND
+    STRING_ENTRY_IF_AUDIO_OUTPUT_FLAG_BIT_PERFECT
 
     { 0, NULL }
 };
